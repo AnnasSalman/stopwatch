@@ -25,7 +25,7 @@ let lastLogEventTime = 0;
 
 // UI Update functions
 const updateTimeOnScreen = (time) => {
-    document.getElementById('time').innerHTML = time;
+    document.getElementById('time').innerHTML = `${time.substring(0, 8)}<span class="small-time">${time.substring(8, 11)}</span>`;
 };
 
 const updateSplitTimeOnScreen = (time) => {

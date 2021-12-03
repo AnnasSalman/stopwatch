@@ -23,8 +23,8 @@ h1{
 h2{
     font-size: 28px;
     font-weight: 300;
-    margin: 2px;
-    margin-bottom: 8px;
+    margin-top: 2px;
+    margin-bottom: 20px;
     color: #f29e25;
 }
 
@@ -99,4 +99,8 @@ body{
 
 .log-pause{
     color: #eb5f7e;
+}
+
+.small-time{
+    font-size: 38px;
 }
