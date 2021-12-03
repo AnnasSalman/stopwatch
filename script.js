@@ -37,6 +37,7 @@ const updateStartPauseButtonText = (text) => {
     document.getElementById('start-pause-button').style.backgroundColor = '#eb5f7e';
 }
 
+// evaluate difference from last event and reset values (if required).
 const addLogEntry = (logType, currentTime) => {
     totalLogs += 1;
     const eventDifference = millisecondsToHHMMSS(currentTime - lastLogEventTime);
@@ -45,6 +46,7 @@ const addLogEntry = (logType, currentTime) => {
     splitTimeInMilliseconds = 0;
 };
 
+// clears the log list
 const clearLogEntries = () => {
     document.getElementById('log-list').innerHTML = '';
     document.getElementById('split-time').innerHTML = 'SPLIT TIME';
@@ -61,12 +63,13 @@ const onStartOrPauseTimerClick = () => {
     }
 };
 
-
+// add an entry to the log list with the current time. Reset the split timer to 0. 
 const onSplitTimerClick = () => {
     splitTimeInMilliseconds = 0;
     addLogEntry('Split', timeInMilliseconds);
 };
 
+// reset all values to initial state.
 const onResetTimerClick = () => {
     startPauseButton.disabled = false;
     resetButton.disabled = true;
@@ -81,6 +84,7 @@ const onResetTimerClick = () => {
     updateStartPauseButtonText('Start');
 };
 
+// stop all time intervals, split time value changed to 0 for next start click. 
 const pauseTimer = () => {
     resetButton.disabled = false;
     splitButton.disabled = true;
@@ -90,6 +94,8 @@ const pauseTimer = () => {
     addLogEntry('Pause', timeInMilliseconds);
 };
 
+/* change the button text from start to pause,
+    start both split and main timers*/
 const startTimer = () => {
     updateStartPauseButtonText('Pause');
     resetButton.disabled = true;
@@ -126,6 +132,7 @@ const millisecondsToHHMMSS = ( timeInMilliseconds ) => {
     return( hours+":"+minutes+":"+seconds);
 }
 
+// return an html element for a log item with the required data. 
 const buildLogItemElement = (totalLogs, timeString, eventType) => {
     return (
         `<div class="log-item">
@@ -138,6 +145,7 @@ const buildLogItemElement = (totalLogs, timeString, eventType) => {
     )
 }
 
+// resets all time intervals to default values
 const clearAllTimeIntervals = () => {
     clearInterval(timerInterval);
     clearInterval(splitTimerInterval);
